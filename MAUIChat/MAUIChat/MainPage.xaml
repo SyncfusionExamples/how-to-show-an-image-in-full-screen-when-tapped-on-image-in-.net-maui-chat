@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfChat="clr-namespace:Syncfusion.Maui.Chat;assembly=Syncfusion.Maui.Chat"
+             xmlns:local="clr-namespace:MAUIChat"
+             x:Class="MAUIChat.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MessageConverter x:Key="MessageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:ChatViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto, *">
+            <Button Text="Capture Image" Clicked="Button_ClickedAsync"/>
+            <sfChat:SfChat x:Name="sfChat" Grid.Row="1"
+                           ImageTapped="sfChat_ImageTapped"
+                           IncomingMessageTimestampFormat="dd/mm : HH:MM tt" 
+                           ShowTimeBreak="True"                                                   
+                           CurrentUser="{Binding CurrentUser}"
+                           ItemsSource="{Binding MessageCollection}"
+                           ItemsSourceConverter="{StaticResource MessageConverter}" 
+                           Background="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"/>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
