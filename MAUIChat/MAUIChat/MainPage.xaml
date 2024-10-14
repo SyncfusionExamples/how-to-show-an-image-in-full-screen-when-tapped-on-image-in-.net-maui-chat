@@ -16,8 +16,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto, *">
-            <Button Text="Capture Image" Clicked="Button_ClickedAsync"/>
+        <Grid RowDefinitions="*">
             <sfChat:SfChat x:Name="sfChat" Grid.Row="1"
                            ImageTapped="sfChat_ImageTapped"
                            IncomingMessageTimestampFormat="dd/mm : HH:MM tt" 
@@ -25,7 +24,11 @@
                            CurrentUser="{Binding CurrentUser}"
                            ItemsSource="{Binding MessageCollection}"
                            ItemsSourceConverter="{StaticResource MessageConverter}" 
-                           Background="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"/>
+                           Background="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}">
+                <sfChat:SfChat.Behaviors>
+                    <local:Behavior/>
+                </sfChat:SfChat.Behaviors>
+            </sfChat:SfChat>
         </Grid>
     </ContentPage.Content>
 
