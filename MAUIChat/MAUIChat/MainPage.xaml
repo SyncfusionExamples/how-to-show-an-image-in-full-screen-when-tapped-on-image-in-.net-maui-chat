@@ -18,7 +18,6 @@
     <ContentPage.Content>
         <Grid RowDefinitions="*">
             <sfChat:SfChat x:Name="sfChat" Grid.Row="1"
-                           ImageTapped="sfChat_ImageTapped"
                            IncomingMessageTimestampFormat="dd/mm : HH:MM tt" 
                            ShowTimeBreak="True"                                                   
                            CurrentUser="{Binding CurrentUser}"
